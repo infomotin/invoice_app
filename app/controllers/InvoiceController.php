@@ -340,4 +340,8 @@ $modeldata['date'] = date_now();
 		}
 		return	$this->redirect("invoice");
 	}
+// 	get all invoice 
+	function getInvoice(){
+	    $db=$this->GetModel();
+	}
 }
