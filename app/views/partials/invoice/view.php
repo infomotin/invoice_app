@@ -13,14 +13,14 @@ $show_edit_btn = $this->show_edit_btn;
 $show_delete_btn = $this->show_delete_btn;
 $show_export_btn = $this->show_export_btn;
 ?>
-<section class="page" id="<?php echo $page_element_id; ?>" data-page-type="view"  data-display-type="table" data-page-url="<?php print_link($current_page); ?>">
+<section class="page ajax-page" id="<?php echo $page_element_id; ?>" data-page-type="view"  data-display-type="custom" data-page-url="<?php print_link($current_page); ?>">
     <?php
     if( $show_header == true ){
     ?>
     <div  class="bg-light p-3 mb-3">
         <div class="container">
             <div class="row ">
-                <div class="col ">
+                <div class="col-12 ">
                     <h4 class="record-title">View  Invoice</h4>
                 </div>
             </div>
@@ -42,6 +42,7 @@ $show_export_btn = $this->show_export_btn;
                         $counter++;
                         ?>
                         <div id="page-report-body" class="">
+                            <!--this is report template-->
                             <div class="row">
                                 <div class="col-md-6 col-md-offset-3 body-main">
                                     <div class="col-md-12">

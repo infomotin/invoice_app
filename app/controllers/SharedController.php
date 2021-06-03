@@ -7,18 +7,6 @@
 class SharedController extends BaseController{
 	
 	/**
-     * invoice_invoice_number_option_list Model Action
-     * @return array
-     */
-	function invoice_invoice_number_option_list(){
-		$db = $this->GetModel();
-		$sqltext = "SELECT DISTINCT invoice_number AS value , title AS label FROM invoice ORDER BY label ASC";
-		$queryparams = null;
-		$arr = $db->rawQuery($sqltext, $queryparams);
-		return $arr;
-	}
-
-	/**
      * invoice_customer_id_option_list Model Action
      * @return array
      */

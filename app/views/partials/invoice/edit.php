@@ -37,36 +37,6 @@ $redirect_to = $this->redirect_to;
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="invoice_number">Invoice Number <span class="text-danger">*</span></label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div class="">
-                                                <select required=""  id="ctrl-invoice_number" name="invoice_number"  placeholder="Select a value ..."    class="custom-select" >
-                                                    <option value="">Select a value ...</option>
-                                                    <?php
-                                                    $rec = $data['invoice_number'];
-                                                    $invoice_number_options = $comp_model -> invoice_invoice_number_option_list();
-                                                    if(!empty($invoice_number_options)){
-                                                    foreach($invoice_number_options as $option){
-                                                    $value = (!empty($option['value']) ? $option['value'] : null);
-                                                    $label = (!empty($option['label']) ? $option['label'] : $value);
-                                                    $selected = ( $value == $rec ? 'selected' : null );
-                                                    ?>
-                                                    <option 
-                                                        <?php echo $selected; ?> value="<?php echo $value; ?>"><?php echo $label; ?>
-                                                    </option>
-                                                    <?php
-                                                    }
-                                                    }
-                                                    ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="row">
-                                        <div class="col-sm-4">
                                             <label class="control-label" for="customer_id">Customer Name <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">

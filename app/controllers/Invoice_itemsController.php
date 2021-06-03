@@ -75,7 +75,8 @@ class Invoice_itemsController extends SecureController{
 		$this->view->report_layout = "report_layout.php";
 		$this->view->report_paper_size = "A4";
 		$this->view->report_orientation = "portrait";
-		$this->render_view("invoice_items/list.php", $data); //render the full page
+		$view_name = (is_ajax() ? "invoice_items/ajax-list.php" : "invoice_items/list.php");
+		$this->render_view($view_name, $data);
 	}
 	/**
      * View record detail 
@@ -214,65 +215,6 @@ class Invoice_itemsController extends SecureController{
 			$this->set_page_error();
 		}
 		return $this->render_view("invoice_items/edit.php", $data);
-	}
-	/**
-     * Update single field
-	 * @param $rec_id (select record by table primary key)
-	 * @param $formdata array() from $_POST
-     * @return array
-     */
-	function editfield($rec_id = null, $formdata = null){
-		$db = $this->GetModel();
-		$this->rec_id = $rec_id;
-		$tablename = $this->tablename;
-		//editable fields
-		$fields = $this->fields = array("id","item_invt_id","invoice_number","quantity");
-		$page_error = null;
-		if($formdata){
-			$postdata = array();
-			$fieldname = $formdata['name'];
-			$fieldvalue = $formdata['value'];
-			$postdata[$fieldname] = $fieldvalue;
-			$postdata = $this->format_request_data($postdata);
-			$this->rules_array = array(
-				'item_invt_id' => 'required',
-				'invoice_number' => 'required',
-				'quantity' => 'required|numeric',
-			);
-			$this->sanitize_array = array(
-				'item_invt_id' => 'sanitize_string',
-				'invoice_number' => 'sanitize_string',
-				'quantity' => 'sanitize_string',
-			);
-			$this->filter_rules = true; //filter validation rules by excluding fields not in the formdata
-			$modeldata = $this->modeldata = $this->validate_form($postdata);
-			if($this->validated()){
-				$db->where("invoice_items.id", $rec_id);;
-				$bool = $db->update($tablename, $modeldata);
-				$numRows = $db->getRowCount();
-				if($bool && $numRows){
-					return render_json(
-						array(
-							'num_rows' =>$numRows,
-							'rec_id' =>$rec_id,
-						)
-					);
-				}
-				else{
-					if($db->getLastError()){
-						$page_error = $db->getLastError();
-					}
-					elseif(!$numRows){
-						$page_error = "No record updated";
-					}
-					render_error($page_error);
-				}
-			}
-			else{
-				render_error($this->view->page_error);
-			}
-		}
-		return null;
 	}
 	/**
      * Delete record from the database

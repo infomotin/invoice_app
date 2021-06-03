@@ -148,7 +148,6 @@ class InvoiceController extends SecureController{
 			$fields = $this->fields = array("invoice_number","customer_id","title","vat_percentage","taxt_percentage","discount_amount","status");
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
-				'invoice_number' => 'required',
 				'customer_id' => 'required',
 				'title' => 'required',
 				'vat_percentage' => 'required|numeric',
@@ -157,7 +156,6 @@ class InvoiceController extends SecureController{
 				'status' => 'required',
 			);
 			$this->sanitize_array = array(
-				'invoice_number' => 'sanitize_string',
 				'customer_id' => 'sanitize_string',
 				'title' => 'sanitize_string',
 				'vat_percentage' => 'sanitize_string',
@@ -167,6 +165,7 @@ class InvoiceController extends SecureController{
 			);
 			$this->filter_vals = true; //set whether to remove empty fields
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
+			$modeldata['invoice_number'] = "IVN".time();
 			if($this->validated()){
 				$rec_id = $this->rec_id = $db->insert($tablename, $modeldata);
 				if($rec_id){
@@ -197,7 +196,6 @@ class InvoiceController extends SecureController{
 		if($formdata){
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
-				'invoice_number' => 'required',
 				'customer_id' => 'required',
 				'title' => 'required',
 				'invoice_items' => 'required',
@@ -207,7 +205,6 @@ class InvoiceController extends SecureController{
 				'status' => 'required',
 			);
 			$this->sanitize_array = array(
-				'invoice_number' => 'sanitize_string',
 				'customer_id' => 'sanitize_string',
 				'title' => 'sanitize_string',
 				'invoice_items' => 'sanitize_string',
@@ -217,7 +214,8 @@ class InvoiceController extends SecureController{
 				'status' => 'sanitize_string',
 			);
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
-			$modeldata['date'] = date_now();
+			$modeldata['invoice_number'] = "IVN".time();
+$modeldata['date'] = date_now();
 			if($this->validated()){
 		# Statement to execute after adding record
 		unset($modeldata['invoice_number']);
@@ -271,7 +269,6 @@ class InvoiceController extends SecureController{
 			$postdata[$fieldname] = $fieldvalue;
 			$postdata = $this->format_request_data($postdata);
 			$this->rules_array = array(
-				'invoice_number' => 'required',
 				'customer_id' => 'required',
 				'title' => 'required',
 				'invoice_items' => 'required',
@@ -281,7 +278,6 @@ class InvoiceController extends SecureController{
 				'status' => 'required',
 			);
 			$this->sanitize_array = array(
-				'invoice_number' => 'sanitize_string',
 				'customer_id' => 'sanitize_string',
 				'title' => 'sanitize_string',
 				'invoice_items' => 'sanitize_string',
