@@ -378,9 +378,14 @@ $modeldata['date'] = date_now();
 		// $sql = "SELECT * FROM `user` WHERE id=".$data['USER_ID'];
 		// $data->customer = (object)$db->rawQuery($sql)[0];
 
-		//get user data from 
-		$sql = "SELECT * FROM setting";
-		$data->setting = (object)$db->rawQuery($sql);
+		//get user data from Company_Name
+		$sql = "SELECT * FROM setting WHERE name = 'Company_Name'";
+		$data->setting->Company_Name = (object)$db->rawQueryOne($sql);
+
+		//get user data from Company_Address
+		$sql = "SELECT * FROM setting WHERE name = 'Company_Address'";
+		$data->setting->Company_Address = (object)$db->rawQueryOne($sql);
+
 
 		return $data;
 	}

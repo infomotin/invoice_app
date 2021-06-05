@@ -41,7 +41,10 @@ $show_export_btn = $this->show_export_btn;
                         $rec_id = (!empty($data['id']) ? urlencode($data['id']) : null);
                         $InvoiceClass = new InvoiceController;
                         $InvoiceData = $InvoiceClass->getInvoice($data['id'],$data['customer_id']);
+                        $company_name = $InvoiceData->setting->Company_Name->value;
+                        $company_address = $InvoiceData->setting->Company_Address->value;
                         var_dump($InvoiceData);
+                        print_r($company_name);
                         $counter++;
                         ?>
                         <div id="page-report-body" class="">
@@ -52,10 +55,8 @@ $show_export_btn = $this->show_export_btn;
                                         <div class="row">
                                             <div class="col-md-4"> <img class="img" alt="Invoce Template" src="http://pngimg.com/uploads/shopping_cart/shopping_cart_PNG59.png" /> </div>
                                             <div class="col-md-8 text-right">
-                                                <h4 style="color: #F81D2D;"><strong><?php echo SITE_NAME; ?></strong></h4>
-                                                <p>221 ,Baker Street</p>
-                                                <p>1800-234-124</p>
-                                                <p>example@gmail.com</p>
+                                                <h4 style="color: #F81D2D;"><strong><?php echo $company_name; ?></strong></h4>
+                                                <p><?php echo $company_address; ?></p>
                                             </div>
                                         </div> <br />
                                         <div class="row">
