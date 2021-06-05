@@ -39,6 +39,9 @@ $show_export_btn = $this->show_export_btn;
                         $counter = 0;
                         if(!empty($data)){
                         $rec_id = (!empty($data['id']) ? urlencode($data['id']) : null);
+                        $InvoiceClass = new InvoiceController;
+                        $InvoiceData = $InvoiceClass->getInvoice($data['id'],$data['customer_id']);
+                        var_dump($InvoiceData);
                         $counter++;
                         ?>
                         <div id="page-report-body" class="">
@@ -49,7 +52,7 @@ $show_export_btn = $this->show_export_btn;
                                         <div class="row">
                                             <div class="col-md-4"> <img class="img" alt="Invoce Template" src="http://pngimg.com/uploads/shopping_cart/shopping_cart_PNG59.png" /> </div>
                                             <div class="col-md-8 text-right">
-                                                <h4 style="color: #F81D2D;"><strong>BBBootstrap</strong></h4>
+                                                <h4 style="color: #F81D2D;"><strong><?php echo SITE_NAME; ?></strong></h4>
                                                 <p>221 ,Baker Street</p>
                                                 <p>1800-234-124</p>
                                                 <p>example@gmail.com</p>

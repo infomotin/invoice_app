@@ -341,7 +341,47 @@ $modeldata['date'] = date_now();
 		return	$this->redirect("invoice");
 	}
 // 	get all invoice 
-	function getInvoice(){
-	    $db=$this->GetModel();
+	function getInvoice($id,$customer_id){
+
+		$db=$this->GetModel();
+	    
+		$data= new \StdClass();
+	   // The stdClass is the empty class in PHP which is used 
+	   //to cast other types to object. It is similar to Java or
+	   // Python object. The stdClass is not the base class of the objects.
+	   // If an object is converted to object, it is not modified.
+	   // But, if object type is converted/type-casted an instance of stdClass is created, 
+	   //if it is not NULL. If it is NULL, the new instance will be empty
+	    
+	   // its model view controller 
+	   // get model 
+		// get from data using this role 
+		// .$data['fornt_end_html_tage_name']
+		// get data from client site 
+		// $data['setting']
+
+
+
+
+
+	    
+		//get user data from 
+		$sql = "SELECT * from invoice_items as ii INNER JOIN inventory as iv on ii.item_invt_id = iv.id WHERE invoice_number = (SELECT invoice_number FROM invoice WHERE id = ".$id.")";
+		// $sql = "SELECT * from invoice_items as ii INNER JOIN inventory as iv on ii.item_invt_id = iv.id WHERE invoice_number = \'IVN1622690601\'";
+		$data->items = $db->rawQuery($sql);
+
+		//get customer data from 
+		$sql = "SELECT * FROM customer WHERE id=".$customer_id;
+		$data->customer = (object)$db->rawQuery($sql)[0];
+
+		// //get user data from 
+		// $sql = "SELECT * FROM `user` WHERE id=".$data['USER_ID'];
+		// $data->customer = (object)$db->rawQuery($sql)[0];
+
+		//get user data from 
+		$sql = "SELECT * FROM setting";
+		$data->setting = (object)$db->rawQuery($sql);
+
+		return $data;
 	}
 }
