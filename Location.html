@@ -1,0 +1,112 @@
+ <script>
+var subjectObject = {
+  "DhakaDivision": {
+                    "DHAKA": ["Savar", "Dhamrai", "Keraniganj", "Nawabganj", "Dohar"],
+                    "NARAYANGANJ": ["Araihazar","Bandar", "Narayanganjsadar", "Rupganj", "Sonargaon"],
+                    "GAZIPUR": ["Kaliganj", "Kaliakair", "Kapasia", "Sadar", "Sreepur"], 
+                    "MUNSHIGANJ": ["Sadar", "Sreenagar", "Sirajdikhan", "Louhajanj", "Gajaria", "Tongibari"],
+                    "MANIKGANJ": ["Harirampur", "Saturia", "Sadar", "Gior", "Shibaloy", "Doulatpur", "Singiar"],
+                    "NARSINGDI": ["Belabo", "Monohardi", "Narsingdisadar", "Palash", "Raipura", "Shibpur"], 
+                    "FARIDPUR": ["Sadar", "Alfadanga", "Boalmari", "Sadarpur", "Nagarkanda", "Bhanga", "Charbhadrasan","Madhukhali", "Saltha"],
+                    "MADARIPUR": ["Sadar", "Shibchar", "Kalkini", "Rajoir"],
+                    "GOPALGANJ": ["Sadar", "Kashiani", "Tungipara", "Kotalipara", "Muksudpur"], 
+                    "RAJBARI": ["Sadar","Goalanda", "Pangsa", "Baliakandi", "Kalukhali"], 
+                    "SHARIATPUR": ["Sadar", "Naria", "Zajira","Gosairhat", "Bhedarganj", "Damudya"],
+                    "TANGAIL": ["Basail", "Bhuapur","Delduar", "Ghatail", "Gopalpur", "Madhupur", "Mirzapur", "Nagarpur", "Sakhipur", "Tangailsadar", "Kalihati","Dhanbari"],
+                    "KISHOREGANJ": ["Itna", "Katiadi", "Bhairab", "Tarail", "Hossainpur", "Pakundia", "Kuliarchar", "Kishoreganjsadar", "Karimgonj", "Bajitpur", "Austagram","Mithamoin","Nikli"] 
+                  },
+      "MymensinghDivision": {
+                    "Sherpur": ["Sherpursadar", "Nalitabari", "Sreebordi", "Nokla", "Jhenaigati"],
+                    "Mymensingh": ["Fulbaria", "Trishal", "Bhaluka", "Muktagacha", "Mymensinghsadar", "Dhobaura", "Phulpur", "Haluaghat", "Gouripur", "Gafargaon", "Iswarganj", "Nandail", "Tarakanda"],
+                    "Jamalpur": ["Jamalpursadar", "Melandah", "Islampur", "Dewangonj", "Sarishabari", "Madarganj", "Bokshiganj"], 
+                    "Netrokona": ["Barhatta", "Durgapur", "Kendua", "Atpara", "Madan", "Khaliajuri", "Kalmakanda", "Mohongonj", "Purbadhala", "Netrokonasadar"],
+                  },
+         "SylhetDivision": {
+                    "Sylhet": ["Sherpursadar", "Nalitabari", "Sreebordi", "Nokla", "Jhenaigati"],
+                    "Moulvibazar": ["Fulbaria", "Trishal", "Bhaluka", "Muktagacha", "Mymensinghsadar", "Dhobaura", "Phulpur", "Haluaghat", "Gouripur", "Gafargaon", "Iswarganj", "Nandail", "Tarakanda"],
+                    "Habiganj": ["Jamalpursadar", "Melandah", "Islampur", "Dewangonj", "Sarishabari", "Madarganj", "Bokshiganj"], 
+                    "Sunamganj": ["Barhatta", "Durgapur", "Kendua", "Atpara", "Madan", "Khaliajuri", "Kalmakanda", "Mohongonj", "Purbadhala", "Netrokonasadar"],
+                  },
+         "RangpurDivision": {
+                    "Panchagarh": ["Sherpursadar", "Nalitabari", "Sreebordi", "Nokla", "Jhenaigati"],
+                    "Dinajpur": ["Fulbaria", "Trishal", "Bhaluka", "Muktagacha", "Mymensinghsadar", "Dhobaura", "Phulpur", "Haluaghat", "Gouripur", "Gafargaon", "Iswarganj", "Nandail", "Tarakanda"],
+                    "Lalmonirhat": ["Jamalpursadar", "Melandah", "Islampur", "Dewangonj", "Sarishabari", "Madarganj", "Bokshiganj"], 
+                    "Nilphamari": ["Barhatta", "Durgapur", "Kendua", "Atpara", "Madan", "Khaliajuri", "Kalmakanda", "Mohongonj", "Purbadhala", "Netrokonasadar"],
+                    "Gaibandha": ["Sherpursadar", "Nalitabari", "Sreebordi", "Nokla", "Jhenaigati"],
+                    "Thakurgaon": ["Fulbaria", "Trishal", "Bhaluka", "Muktagacha", "Mymensinghsadar", "Dhobaura", "Phulpur", "Haluaghat", "Gouripur", "Gafargaon", "Iswarganj", "Nandail", "Tarakanda"],
+                    "Rangpur": ["Jamalpursadar", "Melandah", "Islampur", "Dewangonj", "Sarishabari", "Madarganj", "Bokshiganj"], 
+                    "Kurigram": ["Barhatta", "Durgapur", "Kendua", "Atpara", "Madan", "Khaliajuri", "Kalmakanda", "Mohongonj", "Purbadhala", "Netrokonasadar"],
+                  },
+         "BarishalDivision": {
+                    "Jhalakathi": ["Sherpursadar", "Nalitabari", "Sreebordi", "Nokla", "Jhenaigati"],
+                    "Patuakhali": ["Fulbaria", "Trishal", "Bhaluka", "Muktagacha", "Mymensinghsadar", "Dhobaura", "Phulpur", "Haluaghat", "Gouripur", "Gafargaon", "Iswarganj", "Nandail", "Tarakanda"],
+                    "Pirojpur": ["Jamalpursadar", "Melandah", "Islampur", "Dewangonj", "Sarishabari", "Madarganj", "Bokshiganj"], 
+                    "Barishal": ["Barhatta", "Durgapur", "Kendua", "Atpara", "Madan", "Khaliajuri", "Kalmakanda", "Mohongonj", "Purbadhala", "Netrokonasadar"],
+                    "Bhola": ["Jamalpursadar", "Melandah", "Islampur", "Dewangonj", "Sarishabari", "Madarganj", "Bokshiganj"], 
+                    "Barguna": ["Barhatta", "Durgapur", "Kendua", "Atpara", "Madan", "Khaliajuri", "Kalmakanda", "Mohongonj", "Purbadhala", "Netrokonasadar"],
+                  },
+         "KhulnaDivision": {
+                    "Jashore": ["Sherpursadar", "Nalitabari", "Sreebordi", "Nokla", "Jhenaigati"],
+                    "Satkhira": ["Fulbaria", "Trishal", "Bhaluka", "Muktagacha", "Mymensinghsadar", "Dhobaura", "Phulpur", "Haluaghat", "Gouripur", "Gafargaon", "Iswarganj", "Nandail", "Tarakanda"],
+                    "Meherpur": ["Jamalpursadar", "Melandah", "Islampur", "Dewangonj", "Sarishabari", "Madarganj", "Bokshiganj"], 
+                    "Narail": ["Barhatta", "Durgapur", "Kendua", "Atpara", "Madan", "Khaliajuri", "Kalmakanda", "Mohongonj", "Purbadhala", "Netrokonasadar"],
+                    "Chuadanga": ["Sherpursadar", "Nalitabari", "Sreebordi", "Nokla", "Jhenaigati"],
+                    "Kushtia": ["Fulbaria", "Trishal", "Bhaluka", "Muktagacha", "Mymensinghsadar", "Dhobaura", "Phulpur", "Haluaghat", "Gouripur", "Gafargaon", "Iswarganj", "Nandail", "Tarakanda"],
+                    "Magura": ["Jamalpursadar", "Melandah", "Islampur", "Dewangonj", "Sarishabari", "Madarganj", "Bokshiganj"], 
+                    "Khulna": ["Barhatta", "Durgapur", "Kendua", "Atpara", "Madan", "Khaliajuri", "Kalmakanda", "Mohongonj", "Purbadhala", "Netrokonasadar"],
+                    "Bagerhat": ["Jamalpursadar", "Melandah", "Islampur", "Dewangonj", "Sarishabari", "Madarganj", "Bokshiganj"], 
+                    "Jhenaidah": ["Sadar", "Shailkupa", "Harinakundu", "Kaliganj", "Kotchandpur", "Moheshpur"],
+                  },
+        "RajshahiDivision": {
+                    "Sirajganj": ["Sherpursadar", "Nalitabari", "Sreebordi", "Nokla", "Jhenaigati"],
+                    "Pabna": ["Fulbaria", "Trishal", "Bhaluka", "Muktagacha", "Mymensinghsadar", "Dhobaura", "Phulpur", "Haluaghat", "Gouripur", "Gafargaon", "Iswarganj", "Nandail", "Tarakanda"],
+                    "Bogura": ["Jamalpursadar", "Melandah", "Islampur", "Dewangonj", "Sarishabari", "Madarganj", "Bokshiganj"], 
+                    "Rajshahi": ["Barhatta", "Durgapur", "Kendua", "Atpara", "Madan", "Khaliajuri", "Kalmakanda", "Mohongonj", "Purbadhala", "Netrokonasadar"],
+                    "Natore": ["Sherpursadar", "Nalitabari", "Sreebordi", "Nokla", "Jhenaigati"],
+                    "Joypurhat": ["Fulbaria", "Trishal", "Bhaluka", "Muktagacha", "Mymensinghsadar", "Dhobaura", "Phulpur", "Haluaghat", "Gouripur", "Gafargaon", "Iswarganj", "Nandail", "Tarakanda"],
+                    "Chapainawabganj": ["Jamalpursadar", "Melandah", "Islampur", "Dewangonj", "Sarishabari", "Madarganj", "Bokshiganj"], 
+                    "Naogaon": ["Barhatta", "Durgapur", "Kendua", "Atpara", "Madan", "Khaliajuri", "Kalmakanda", "Mohongonj", "Purbadhala", "Netrokonasadar"],
+                  },
+        "ChattogramDivision": {
+                    "Cumilla": ["Sherpursadar", "Nalitabari", "Sreebordi", "Nokla", "Jhenaigati"],
+                    "Feni": ["Fulbaria", "Trishal", "Bhaluka", "Muktagacha", "Mymensinghsadar", "Dhobaura", "Phulpur", "Haluaghat", "Gouripur", "Gafargaon", "Iswarganj", "Nandail", "Tarakanda"],
+                    "Brahmanbaria": ["Jamalpursadar", "Melandah", "Islampur", "Dewangonj", "Sarishabari", "Madarganj", "Bokshiganj"], 
+                    "Rangamati": ["Barhatta", "Durgapur", "Kendua", "Atpara", "Madan", "Khaliajuri", "Kalmakanda", "Mohongonj", "Purbadhala", "Netrokonasadar"],
+                    "Noakhali": ["Sherpursadar", "Nalitabari", "Sreebordi", "Nokla", "Jhenaigati"],
+                    "Chandpur": ["Fulbaria", "Trishal", "Bhaluka", "Muktagacha", "Mymensinghsadar", "Dhobaura", "Phulpur", "Haluaghat", "Gouripur", "Gafargaon", "Iswarganj", "Nandail", "Tarakanda"],
+                    "Lakshmipur": ["Jamalpursadar", "Melandah", "Islampur", "Dewangonj", "Sarishabari", "Madarganj", "Bokshiganj"], 
+                    "Chattogram": ["Barhatta", "Durgapur", "Kendua", "Atpara", "Madan", "Khaliajuri", "Kalmakanda", "Mohongonj", "Purbadhala", "Netrokonasadar"],
+                    "Coxsbazar": ["Sherpursadar", "Nalitabari", "Sreebordi", "Nokla", "Jhenaigati"],
+                    "Khagrachhari": ["Fulbaria", "Trishal", "Bhaluka", "Muktagacha", "Mymensinghsadar", "Dhobaura", "Phulpur", "Haluaghat", "Gouripur", "Gafargaon", "Iswarganj", "Nandail", "Tarakanda"],
+                    "Bandarban": ["Jamalpursadar", "Melandah", "Islampur", "Dewangonj", "Sarishabari", "Madarganj", "Bokshiganj"], 
+                    
+                  },
+                  
+}
+window.onload = function() {
+  var subjectSel = document.getElementById("divitions");
+  var topicSel = document.getElementById("district");
+  var chapterSel = document.getElementById("upozila");
+  for (var x in subjectObject) {
+    subjectSel.options[subjectSel.options.length] = new Option(x, x);
+  }
+  subjectSel.onchange = function() {
+ //empty Chapters- and Topics- dropdowns
+ chapterSel.length = 1;
+ topicSel.length = 1;
+    //display correct values
+    for (var y in subjectObject[this.value]) {
+      topicSel.options[topicSel.options.length] = new Option(y, y);
+    }
+  }
+  topicSel.onchange = function() {
+ //empty Chapters dropdown
+ chapterSel.length = 1;
+    //display correct values
+    var z = subjectObject[subjectSel.value][this.value];
+    for (var i = 0; i < z.length; i++) {
+      chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
+    }
+  }
+}
+</script>
